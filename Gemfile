@@ -4,7 +4,16 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+group :development do
+  gem 'sqlite3'
+end
+
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -36,14 +45,13 @@ gem 'whenever', :require => false
 
 gem 'devise'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap-sass', '~> 3.1.1'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'rb-readline'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'figaro'

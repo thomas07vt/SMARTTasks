@@ -9,8 +9,12 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs"> 
-      <li><%= link_to "SMART Tasks", root_path, class: 'text-muted' %></li>
-      <li><%= link_to "About", about_path %></li>
+      <% if current_user %>
+        <li><%= link_to "My Lists", user_lists_path(current_user) %></li>
+        <li><%= link_to "New List", new_user_list_path(current_user) %></li>
+      <% else %>
+        <li><%= link_to "SMART Tasks", root_path, class: 'text-muted' %></li>
+      <% end %>
 
       <div class="pull-right user-info">
         <% if current_user %>

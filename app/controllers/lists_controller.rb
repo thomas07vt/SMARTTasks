@@ -1,10 +1,18 @@
 class ListsController < ApplicationController
+
   def new
     @user = User.find(params[:user_id])
     @list = List.new
   end
 
   def show
+    @list = List.find(params[:id])
+    @user = @list.user
+    @todos = @list.todos
+    @new_todo = Todo.new
+    @completedtodos = @todos.where(completed: true)
+    @incompletetodos = @list.todos.where(completed: false)
+
   end
 
   def update
@@ -31,6 +39,8 @@ class ListsController < ApplicationController
   end
 
   def index
+    @user = User.find(params[:user_id])
+    @lists = @user.lists
   end
 
   def list_params

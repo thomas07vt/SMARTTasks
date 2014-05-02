@@ -1,0 +1,8 @@
+<% if @todo.valid? %>
+  $('#newTODO').addClass("hide");
+  $('#todo_body').val('');
+  $('#todoBody').prepend("<%= escape_javascript(render(@todo)) %>");
+<% else %>
+  //Reload page to access the flash[:error] notification.
+  window.location.reload();
+<% end %>

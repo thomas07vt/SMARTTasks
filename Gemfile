@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.1'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
@@ -52,6 +54,7 @@ gem 'rb-readline'
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 gem 'figaro'

@@ -23,7 +23,7 @@ feature 'User can Submit Sign In Information' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'helloworld'
     click_button 'Sign in'
-    current_path.should == root_path
+    current_path.should == user_path(user.id)
     expect(page).to have_content 'Signed in successfully.'
   end
 end

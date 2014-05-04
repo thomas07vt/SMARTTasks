@@ -1,3 +1,3 @@
-every 2.minutes do
+every 1.day do
   rake "delete_old_todos"
 end

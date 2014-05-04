@@ -10,8 +10,8 @@
   <div class="container">
     <ul class="nav nav-tabs"> 
       <% if current_user %>
-        <li><%= link_to "My Lists", user_lists_path(current_user) %></li>
-        <li><%= link_to "New List", new_user_list_path(current_user) %></li>
+        <li><%= link_to "My Lists", user_path(current_user), class: 'text-muted' %></li>
+        <li><%= link_to "New List", new_user_list_path(current_user), class: 'text-muted' %></li>
       <% else %>
         <li><%= link_to "SMART Tasks", root_path, class: 'text-muted' %></li>
       <% end %>

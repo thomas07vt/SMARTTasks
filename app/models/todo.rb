@@ -8,6 +8,6 @@ class Todo < ActiveRecord::Base
   default_scope { order('created_at DESC') }
 
   def days_left(lifetime)
-    (lifetime - ((Time.now - self.created_at) / 1.hour.seconds).round(1))
+    (lifetime - ((Time.now - self.created_at) / 1.day.seconds)).round(1)
   end
 end

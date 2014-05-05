@@ -8,9 +8,9 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @user = @list.user
-    @todos = @list.todos
+    #@todos = @list.todos
     @new_todo = Todo.new
-    @completedtodos = @todos.where(completed: true)
+    #@completedtodos = @todos.where(completed: true)
     @incompletetodos = @list.todos.where(completed: false)
 
   end
@@ -33,14 +33,23 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    @list = List.find(params[:id])
+
+    if @list.destroy
+      flash[:notice] = "\"#{@list.title}\" was successfully deleted."
+    else
+      flash[:error] = "There was an error deleting the TODO List. Please try again."
+    end
+
+    redirect_to [@list.user]
+
   end
 
   def edit
   end
 
   def index
-    @user = User.find(params[:user_id])
-    @lists = @user.lists
+    redirect_to user_path(current_user)
   end
 
   def list_params

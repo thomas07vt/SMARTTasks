@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :todo do
     body "MyString"
-    list nil
+    list 
     completed false
   end
 end

@@ -55,6 +55,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara-webkit'
+  gem 'selenium-webdriver', '~> 2.41.0'
 end
 
 gem 'figaro'

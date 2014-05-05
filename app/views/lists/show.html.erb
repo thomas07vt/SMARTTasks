@@ -1,2 +1,41 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<div>
+  <div class="col-md-10">
+    <h1><%= @list.title %></h1>
+  </div>
+  <div class="col-md-2 del-btn">
+  <%= link_to "Delete List", [@user, @list], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this TODO list?' } %>
+  </div>
+</div>
+<br>
+<div class="list todoList">
+
+  <table class="table table-bordered col-md-12">
+    <thead>
+      <tr class="info">
+          <th class="text-center">Description</th>
+          <th class="text-center">Days Left</th>
+          <th class="text-center">Complete</th>
+      </tr>
+    </thead>
+    <tbody id="todoBody">
+        <%= render partial: "todos/todo", collection: @incompletetodos %>
+        <tr id="newTODO" class="hide">
+          <td id="newTodoTD" class="text-center" colspan="3">
+            <%= form_for [@user, @list, @new_todo], remote: true do |f| %>
+              <div class="col-md-10">
+                <%= f.text_field :body, rows: 8, class: 'form-control', placeholder: "Enter todo item here..." %>
+              </div>
+              <div class="form-group col-md-2">
+                <%= f.submit "Save", class: 'btn btn-success' %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-center" colspan="3">
+            <%= link_to "Create New Todo Item", new_user_list_todo_path(@user, @list), remote: true, class: 'btn btn-success' %>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>

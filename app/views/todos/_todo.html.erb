@@ -1,0 +1,10 @@
+<tr>
+  <td><%= todo.body %></td>
+  <td class="text-center"><%= todo.days_left(7) %></td>
+  <td class="text-center">
+    <%= form_for [@user, @list, todo], remote: true do |f| %>
+      <%= check_box("todo", "completed", {checked: todo.completed, :onclick => "$('#edit_todo_#{todo.id}').submit()", :mode => "patch" }) %>
+    <% end %>
+  </td>
+</tr>
+

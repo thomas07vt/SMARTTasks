@@ -9,3 +9,15 @@
     <% end %>
   </p>
 </div>
+
+<div class="col-md-12">
+  <% @lists.each do |l| %>
+    <div class="listthumbsec col-md-6">
+      <div class="listthumbhead">
+        <div class="listthumb col-md-12">
+          <h3><%= link_to l.title, user_list_path(@user, l), { :style=>'color:#000000;' } %></h3>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

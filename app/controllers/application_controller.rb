@@ -15,4 +15,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :username
   end  
 
+  def authenticate
+    authenticate_or_request_with_http_basic do |email, password|
+      logger.info "username: #{email}, pass: #{password}"
+      user = User.find_by_email(email)
+      if !user.nil?
+        user.valid_password?(password)
+      else
+        false
+      end
+    end
+  end
+
 end

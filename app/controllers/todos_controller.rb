@@ -15,8 +15,6 @@ class TodosController < ApplicationController
     respond_with(@todo) do |f|
       f.html { redirect_to [@user, @list] }
     end
-
-
   end
 
   def destroy

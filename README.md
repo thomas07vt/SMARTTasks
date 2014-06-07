@@ -55,7 +55,7 @@ Specify when the result(s) can be achieved.
 * Authentication: Required
 * Parameters: username, email, pass,
 * Example:
-* 
+ 
     **Command:**
       >curl localhost:3000/api/v1/users/create -d "username=testUser4&email=testUser4@test.com&password=password" -u 'thomas07@email.com:password'
 
@@ -103,7 +103,7 @@ Specify when the result(s) can be achieved.
 * Authentication: Required
 * Parameters: id
 * Example:
-* 
+ 
     **Command:**
       > curl localhost:3000/api/v1/lists/15 -u 'testUser@test.com:password'
 

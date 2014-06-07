@@ -7,10 +7,11 @@ describe Api::V1::UsersController do
   end
 
   describe "create" do
+
     it "creates and returns a new user from username and password params" do
       user = FactoryGirl.create(:user)
       @request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("#{user.email}:#{user.password}")
-      params = { 'username' => 'testuser', 'email' => 'test@gmail.com', 'pass' => 'testpass' }
+      params = { 'username' => 'testuser', 'email' => 'test@gmail.com', 'password' => 'testpass' }
 
       expect{ post :create, params.merge(format: :json) }
         .to change{ User.all.count }
@@ -32,7 +33,7 @@ describe Api::V1::UsersController do
     it "returns an error when not given a username" do
       user = FactoryGirl.create(:user)
       @request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("#{user.email}:#{user.password}")
-      params = { 'pass' => 'testpass', 'email' => 'test@gmail.com' }
+      params = { 'password' => 'testpass', 'email' => 'test@gmail.com' }
 
       post :create, params.merge(format: :json)
       response.status.should == 400
@@ -42,7 +43,7 @@ describe Api::V1::UsersController do
     it "returns an error when not given an email" do
       user = FactoryGirl.create(:user)
       @request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("#{user.email}:#{user.password}")
-      params = { 'username' => 'testuser', 'pass' => 'testpass' }
+      params = { 'username' => 'testuser', 'password' => 'testpass' }
 
       post :create, params.merge(format: :json)
       response.status.should == 400
@@ -51,7 +52,7 @@ describe Api::V1::UsersController do
 
     it "returns HTTP 401 error when a user is not authenticated" do
       user = FactoryGirl.create(:user)
-      params = { 'username' => 'testuser', 'email' => 'test@gmail.com', 'pass' => 'testpass' }
+      params = { 'username' => 'testuser', 'email' => 'test@gmail.com', 'password' => 'testpass' }
 
       expect{ post :create, params.merge(format: :json) }
         .to change{ User.all.count }

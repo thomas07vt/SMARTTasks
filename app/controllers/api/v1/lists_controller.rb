@@ -65,7 +65,7 @@ module Api
             render status: :bad_request, :text => "List deletion failed."
           end
         else
-          render status: :unauthorized, :text => "You are not authroized."
+          render status: :unauthorized, :text => "You are not authroized or this list does not exist."
         end
         
       rescue

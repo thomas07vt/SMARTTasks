@@ -26,7 +26,7 @@ module Api
     private
 
     def user_params
-      {username: params[:username], email: params[:email], password: params[:pass]}
+      {username: params[:username], email: params[:email], password: params[:password]}
     end
 
     end

@@ -33,8 +33,10 @@ Specify when the result(s) can be achieved.
 * Authentication: None
 * Parameters: None
 * Example:
+
     **Command:**
-      >curl url/api/v1/users
+      > curl localhost:3000/api/v1/users
+
     **Response:** 
       >{
       >   "users":[
@@ -47,7 +49,7 @@ Specify when the result(s) can be achieved.
 
 
 
-##### Create
+#### Create
 * URL: /api/v1/users/create
 * Method: POST
 * Authentication: Required
@@ -68,8 +70,11 @@ Specify when the result(s) can be achieved.
 * Authentication: None
 * Parameters: user_id
 * Example:
+
     **Command:**
+   
       > curl localhost:3000/api/v1/lists?user_id=1
+   
     **Authenticated Response:**
       >[
         {"id":13,"title":"New listname 9","user_id":1,"created_at":"2014-06-03T22:03:59.862Z","updated_at":"2014-06-05T23:42:28.995Z","permission":"open"},
@@ -78,8 +83,10 @@ Specify when the result(s) can be achieved.
         {"id":16,"title":"Testing new permissions","user_id":1,"created_at":"2014-06-04T19:01:52.153Z","updated_at":"2014-06-05T23:42:29.033Z","permission":"open"}
       ]
 
+
     **Unauthenticated Response:** 
       > HTTP Basic: Access denied.
+      
     **Request Failure Resonse:** 
       > You are not authroized.
 

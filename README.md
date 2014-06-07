@@ -55,11 +55,18 @@ Specify when the result(s) can be achieved.
 * Authentication: Required
 * Parameters: username, email, pass,
 * Example:
+* 
     **Command:**
-      curl localhost:3000/api/v1/users/create -d "username=testUser4&email=testUser4@test.com&password=password" -u 'thomas07@email.com:password'
-    **Authenticated Response:** User was created successfully.
-    **Unauthenticated Response:** HTTP Basic: Access denied.
-    **Request Failure Resonse:** User creation failed.
+      >curl localhost:3000/api/v1/users/create -d "username=testUser4&email=testUser4@test.com&password=password" -u 'thomas07@email.com:password'
+
+    **Authenticated Response:** 
+      > User was created successfully.
+      
+    **Unauthenticated Response:** 
+      > HTTP Basic: Access denied.
+      
+    **Request Failure Resonse:** 
+      > User creation failed.
 
 
 ### Lists
@@ -96,11 +103,12 @@ Specify when the result(s) can be achieved.
 * Authentication: Required
 * Parameters: id
 * Example:
+* 
     **Command:**
       > curl localhost:3000/api/v1/lists/15 -u 'testUser@test.com:password'
+
     **Authenticated Response:**
-      >
-      {"list":
+      > {"list":
         {"id":15,"title":"Testing new route 2","user_id":1,"created_at":"2014-06-04T17:29:17.153Z","updated_at":"2014-06-05T23:42:29.022Z","permission":"open"},
         "todos":[
           {"id":23,"body":"Here is a todo item","list_id":15,"completed":false,"created_at":"2014-06-04T17:57:32.367Z","updated_at":"2014-06-04T17:57:32.367Z","position":null},{"id":22,"body":"created todo route","list_id":15,"completed":false,"created_at":"2014-06-05T2304T17:49:49.642Z","updated_at":"2014-06-04T17:49:49.642Z","position":null}
@@ -109,6 +117,7 @@ Specify when the result(s) can be achieved.
 
     **Unauthenticated Response:** 
       > HTTP Basic: Access denied.
+      
     **Request Failure Resonse:** 
       > You are not authroized.
 
@@ -118,12 +127,16 @@ Specify when the result(s) can be achieved.
 * Authentication: Required
 * Parameters: user_id, list_title, permission (optional)
 * Example:
+
     **Command:**
       > curl localhost:3000/api/v1/lists/create -d "user_id=1&list_title='my list title'&permission=open" -u 'testUser@test.com:password'
+      
     **Authenticated Response:** 
       > List was created successfully.
+    
     **Unauthenticated Response:**  
       > HTTP Basic: Access denied.
+   
     **Request Failure Resonse:** 
       > List creation failed.
 
@@ -133,12 +146,16 @@ Specify when the result(s) can be achieved.
 * Authentication: Required
 * Parameters: id, list_title (optional), permission (optional)
 * Example:
+    
     **Command:**
       > curl --request PATCH localhost:3000/api/v1/lists/15 -d "list_title='my NEW list title'&permission=open" -u 'testUser@test.com:password'
+    
     **Authenticated Response:** 
       > List was updated successfully.
+    
     **Unauthenticated Response:** 
       > HTTP Basic: Access denied.
+    
     **Request Failure Resonse:** 
       > You are not authroized.
 
@@ -149,13 +166,19 @@ Specify when the result(s) can be achieved.
 * Authentication: Required
 * Parameters: id
 * Example:
+
     **Command:**
       > curl --request DELETE localhost:3000/api/v1/lists/15 -u 'testUser@test.com:password'
+      
     **Authenticated Response:** 
       > List was deleted successfully.
+      
     **Unauthenticated Response:** 
       > HTTP Basic: Access denied.
+      
     **Request Failure Resonse:** 
       > List deletion failed.
+      
     or
+    
       > You are not authroized or this list does not exist.
